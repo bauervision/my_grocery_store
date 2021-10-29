@@ -48,5 +48,6 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     public void OnPointerUp(PointerEventData eventData)
     {
         currentTransform.position = currentPossition;
+        StoreManager.instance.SaveNewArrangement();
     }
 }

@@ -52,10 +52,12 @@ public class UIManager : MonoBehaviour
         NewStoreScreen.SetActive(true);
 
     }
+
     public void SetScreen_EditStore()
     {
         HideAllScreens();
         EditStoreScreen.SetActive(true);
+        StoreManager.instance.LoadDefaultStoreSections();
 
     }
     public void SetScreen_EditFood()
@@ -69,8 +71,8 @@ public class UIManager : MonoBehaviour
     {
         HideAllScreens();
         EditSectionsScreen.SetActive(true);
-        StoreManager.instance.LoadEditStoreSections();
-
+        StoreManager.instance.LoadEditStoreSectionItems();
+        StoreManager.instance.SetItemDropDown();
     }
     public void SetScreen_Start()
     {
