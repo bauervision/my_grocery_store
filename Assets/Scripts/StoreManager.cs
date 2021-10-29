@@ -177,7 +177,7 @@ public class StoreManager : MonoBehaviour
 
         CreateNewSectionGameObject(newItemName, editSections, sectionPrefab, editItemsGrid);
         // save the update
-        activeSection.items = GetCurrentSectionList(sectionGrid);
+        activeSection.items = GetCurrentSectionList(editItemsGrid);
 
     }
 
