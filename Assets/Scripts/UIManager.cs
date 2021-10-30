@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     public GameObject EditFoodScreen;
     public GameObject EditSectionsScreen;
 
+    [Header("New List Items")]
+    public GameObject NewListGrid;
+    public GameObject NewListPanel;
+
 
     private void Awake()
     {
