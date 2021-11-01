@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     {
         // always make sure the UI is in the right state before we launch
         InitUI();
+
+        NewListPanel.SetActive(false);
     }
 
     private void InitUI()
@@ -48,8 +50,17 @@ public class UIManager : MonoBehaviour
     {
         HideAllScreens();
         NewListScreen.SetActive(true);
+        NewListPanel.SetActive(false);
+        NewListGrid.SetActive(true);
+    }
+
+    public void NewList_CreateNew()
+    {
+        NewListPanel.SetActive(true);
+        NewListGrid.SetActive(false);
 
     }
+
     public void SetScreen_NewStore()
     {
         HideAllScreens();
