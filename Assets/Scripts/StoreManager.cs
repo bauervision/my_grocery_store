@@ -9,6 +9,8 @@ public class StoreManager : MonoBehaviour
     [Header("UI Objects")]
 
     public Dropdown stores_dropdown;
+
+    public Dropdown current_stores_dropdown;
     public Dropdown sections_dropdown;
     public GameObject sectionGrid;
     public GameObject editItemsGrid;
@@ -33,13 +35,23 @@ public class StoreManager : MonoBehaviour
     private List<GameObject> loadedSections = new List<GameObject>();
     private List<GameObject> editSections = new List<GameObject>();
 
-    private string[] defaultSections = new string[] { "Produce", "Alcohol", "Bread", "Meats", "Coffee", "Supplies", "Clothes" };
-
-
 
     public int activeStoreID = -1;
     private string newSectionName = string.Empty;
     private string newItemName = string.Empty;
+
+    // Default Sections
+    private string[] defaultSections = new string[] { "Produce", "Alcohol", "Bread", "Meats", "Coffee", "Supplies", "Clothes", "Snacks" };
+
+    //Deafult Items
+    private string[] produce = new string[] { "Apples", "Bananas", "Lettuce", "Berries", "Veggies" };
+    private string[] alcohol = new string[] { "Wine", "Beer" };
+    private string[] breads = new string[] { "Bread", "Hot Dog buns", "Hamburger Buns", "Muffins" };
+    private string[] meats = new string[] { "Meats", "Bacon", "Hot dogs", "Beef", "Chicken", "Turkey", "Pork", "Lunch Meat" };
+    private string[] coffee = new string[] { "Coffee", "Starbucks", "Peets", "Creamer" };
+    private string[] supplies = new string[] { "TP", "PT", "Trash Bags", "Sandwich Bags", "Paper Plates" };
+    private string[] clothes = new string[] { "Socks", "Pants", "Shirts", "Underwear" };
+    private string[] snacks = new string[] { "Snacks", "Cheeseits", "Pop Tarts", "Chips", "Popcorn", "Cereal" };
 
 
     // Start is called before the first frame update
@@ -60,11 +72,13 @@ public class StoreManager : MonoBehaviour
     private void DefaultData()
     {
         stores_dropdown.ClearOptions();
+        current_stores_dropdown.ClearOptions();
 
         AddNewStore("Harris Teeter", defaultSections);
         AddNewStore("Walmart", defaultSections);
         AddNewStore("Target", defaultSections);
         stores_dropdown.AddOptions(store_options);
+        current_stores_dropdown.AddOptions(store_options);// for the paste list screen
 
         // start with the first store as the active store that is loaded
         SetActiveStore(0);
@@ -85,13 +99,14 @@ public class StoreManager : MonoBehaviour
         newStore.store_sections = sections;
         // populate some basic items
         newStore.sectionItems = new List<SectionItem>();
-        newStore.sectionItems.Add(new SectionItem(sections[0], new string[] { "Apples", "Bananas", "Lettuce", "Berries" }));
-        newStore.sectionItems.Add(new SectionItem(sections[1], new string[] { "Wine", "Beer" }));
-        newStore.sectionItems.Add(new SectionItem(sections[2], new string[] { "Bread", "Hot Dog buns", "Hamburger Buns", "Muffins" }));
-        newStore.sectionItems.Add(new SectionItem(sections[3], new string[] { "Bacon", "Hot dogs", "Beef", "Chicken", "Turkey", "Pork" }));
-        newStore.sectionItems.Add(new SectionItem(sections[4], new string[] { "Starbucks", "Peets", "Creamer" }));
-        newStore.sectionItems.Add(new SectionItem(sections[5], new string[] { "TP", "PT", "Trash Bags", "Sandwich Bags", "Paper Plates" }));
-        newStore.sectionItems.Add(new SectionItem(sections[6], new string[] { "Socks", "Pants", "Shirts", "Underwear" }));
+        newStore.sectionItems.Add(new SectionItem(sections[0], produce));
+        newStore.sectionItems.Add(new SectionItem(sections[1], alcohol));
+        newStore.sectionItems.Add(new SectionItem(sections[2], breads));
+        newStore.sectionItems.Add(new SectionItem(sections[3], meats));
+        newStore.sectionItems.Add(new SectionItem(sections[4], coffee));
+        newStore.sectionItems.Add(new SectionItem(sections[5], supplies));
+        newStore.sectionItems.Add(new SectionItem(sections[6], clothes));
+        newStore.sectionItems.Add(new SectionItem(sections[7], snacks));
 
         my_stores.Add(newStore);
         Dropdown.OptionData newOption = new Dropdown.OptionData();
@@ -99,6 +114,11 @@ public class StoreManager : MonoBehaviour
         store_options.Add(newOption);
     }
 
+    public void SetActiveStoreForPasteList(int storeID)
+    {
+        activeStore = my_stores[storeID];
+
+    }
 
     public void SetActiveStore(int storeID)
     {
@@ -257,4 +277,6 @@ public class StoreManager : MonoBehaviour
             activeStore.store_sections = GetCurrentSectionList(sectionGrid);
 
     }
+
+
 }

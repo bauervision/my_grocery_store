@@ -16,12 +16,20 @@ public class UIManager : MonoBehaviour
     public GameObject NewListPanel;
 
 
+    [Header("Paste List Items")]
+    public GameObject PasteListPanel;
+    public GameObject PasteListInput;
+    public GameObject PasteListScrollView;
+    public GameObject PasteListAddItem;
+
+
+
     private void Awake()
     {
         // always make sure the UI is in the right state before we launch
         InitUI();
 
-        NewListPanel.SetActive(false);
+
     }
 
     private void InitUI()
@@ -43,9 +51,55 @@ public class UIManager : MonoBehaviour
 
         if (!EditSectionsScreen.activeInHierarchy)
             EditSectionsScreen.SetActive(true);
+
+        // if visible, hide these
+        if (NewListPanel.activeInHierarchy)
+            NewListPanel.SetActive(false);
+
+        if (PasteListPanel.activeInHierarchy)
+            PasteListPanel.SetActive(false);
+
+        if (PasteListInput.activeInHierarchy)
+            PasteListInput.SetActive(false);
+
+        if (PasteListAddItem.activeInHierarchy)
+            PasteListAddItem.SetActive(false);
+
+        if (PasteListScrollView.activeInHierarchy)
+            PasteListScrollView.SetActive(false);
     }
 
     #region Screen Handlers
+
+    private void HideAllScreens()
+    {
+        StartScreen.SetActive(false);
+        NewListScreen.SetActive(false);
+        NewStoreScreen.SetActive(false);
+        EditFoodScreen.SetActive(false);
+        EditStoreScreen.SetActive(false);
+        EditSectionsScreen.SetActive(false);
+
+        PasteListPanel.SetActive(false);
+        PasteListInput.SetActive(false);
+        PasteListScrollView.SetActive(false);
+        PasteListAddItem.SetActive(false);
+    }
+
+    public void ShowConvertedList()
+    {
+        PasteListInput.SetActive(false);
+        PasteListScrollView.SetActive(true);
+        PasteListAddItem.SetActive(true);
+    }
+
+    public void SetScreen_PasteList()
+    {
+        HideAllScreens();
+        PasteListPanel.SetActive(true);
+        PasteListInput.SetActive(true);
+
+    }
     public void SetScreen_NewList()
     {
         HideAllScreens();
@@ -96,15 +150,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void HideAllScreens()
-    {
-        StartScreen.SetActive(false);
-        NewListScreen.SetActive(false);
-        NewStoreScreen.SetActive(false);
-        EditFoodScreen.SetActive(false);
-        EditStoreScreen.SetActive(false);
-        EditSectionsScreen.SetActive(false);
-    }
+
 
     #endregion
 

@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\NativeToolkit\Example\NativeToolkitExample.cs" />
      <Compile Include="Assets\Scripts\GroceryItem.cs" />
+     <Compile Include="Assets\Scripts\ListManager.cs" />
      <Compile Include="Assets\Scripts\ProcessList.cs" />
      <Compile Include="Assets\Scripts\StoreManager.cs" />
      <Compile Include="Assets\NativeToolkit\Scripts\MiniJSON.cs" />
@@ -46,7 +47,6 @@
      <Compile Include="Assets\NativeToolkit\Scripts\NativeToolkit.cs" />
      <Compile Include="Assets\Scripts\DragController.cs" />
      <Compile Include="Assets\Scripts\TestSwipeEvent.cs" />
-     <Compile Include="Assets\Scripts\ListManager.cs" />
      <None Include="Assets\Gamestrap\UI\Fonts\Monospace\README.txt" />
      <None Include="Assets\Gamestrap\UI\Fonts\Lato\SIL Open Font License.txt" />
      <None Include="Assets\Scripts\demoList.txt" />
