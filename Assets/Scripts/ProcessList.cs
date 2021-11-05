@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
 public class ProcessList : MonoBehaviour
 {
-    public TextAsset demoList;
-
     public List<GroceryItem> groceryList;
 
     public string rawList;
@@ -14,7 +14,7 @@ public class ProcessList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ProcessIncomingList();
+
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class ProcessList : MonoBehaviour
     {
 
     }
+
 
     public void ProcessIncomingList()
     {
@@ -33,7 +34,17 @@ public class ProcessList : MonoBehaviour
                 groceryList.Add(HandleItemConversion(item));
             }
         }
+
+        // now we have a completely converted grocery list, arrange the list by section first
+        groceryList.Sort((i1, i2) => i1.section_index.CompareTo(i2.section_index));
+
+        // finally spawn the list on the UI
+        foreach (GroceryItem item in groceryList)
+            StoreManager.instance.CreateNewListGameObject(item.name);
+
     }
+
+
 
     private GroceryItem HandleItemConversion(string rawItemName)
     {
@@ -59,13 +70,9 @@ public class ProcessList : MonoBehaviour
     {
         string sectionName = "Unknown";
         foreach (SectionItem sectionItem in StoreManager.instance.activeStore.sectionItems)
-        {
-            // if (sectionItem.items.Contains(itemName))
             foreach (string item in sectionItem.items)
                 if (HandleItemCases(item.ToLower(), itemName.ToLower()))
                     sectionName = sectionItem.section_name;
-
-        }
 
         return sectionName;
     }

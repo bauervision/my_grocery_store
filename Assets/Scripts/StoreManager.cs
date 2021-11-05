@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 
 public class StoreManager : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class StoreManager : MonoBehaviour
     public Dropdown sections_dropdown;
     public GameObject sectionGrid;
     public GameObject editItemsGrid;
+    public GameObject newListItemsGrid;
+    public GameObject listItemPrefab;
     public GameObject sectionPrefab;
     public GameObject draggablePrefab;
     public GameObject newSectionButton;
@@ -36,6 +41,8 @@ public class StoreManager : MonoBehaviour
     private List<GameObject> editSections = new List<GameObject>();
 
 
+    private UnityEvent onEndEvent = new UnityEvent();
+
     public int activeStoreID = -1;
     private string newSectionName = string.Empty;
     private string newItemName = string.Empty;
@@ -54,11 +61,14 @@ public class StoreManager : MonoBehaviour
     private string[] snacks = new string[] { "Snacks", "Cheeseits", "Pop Tarts", "Chips", "Popcorn", "Cereal" };
 
 
+    private int groceryListCount = 0;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         DefaultData();
+
+        UIManager.instance.HideEditStores();
         newSectionConfirmation.SetActive(false);
         newItemConfirmation.SetActive(false);
     }
@@ -66,6 +76,16 @@ public class StoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // monitor the lists
+        if (groceryListCount != newListItemsGrid.transform.childCount)
+        {
+            groceryListCount = newListItemsGrid.transform.childCount;
+            if (groceryListCount == 0)
+            {
+                print("List Complete!");
+            }
+        }
 
     }
 
@@ -219,6 +239,25 @@ public class StoreManager : MonoBehaviour
         list.Add(section);
     }
 
+
+    public void CreateNewListGameObject(string name)
+    {
+        // add a new section
+        GameObject section = GameObject.Instantiate(listItemPrefab, newListItemsGrid.transform);
+        section.GetComponent<Lean.Gui.LeanDrag>().OnEnd.AddListener(() => HandleItemDragged(name, section));
+        // set the first child
+        section.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = name;
+
+
+    }
+
+    private void HandleItemDragged(string name, GameObject item)
+    {
+        Destroy(item);
+        print(newListItemsGrid.transform.childCount + " list items reamining");
+
+    }
+
     public void SetNewSectionName(string newSection)
     {
         newSectionName = newSection;
@@ -280,3 +319,4 @@ public class StoreManager : MonoBehaviour
 
 
 }
+

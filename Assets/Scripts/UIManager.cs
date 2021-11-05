@@ -1,8 +1,13 @@
 using System;
 using UnityEngine;
 
+
+
 public class UIManager : MonoBehaviour
 {
+
+    public static UIManager instance;
+
     [Header("Main Screens")]
     public GameObject StartScreen;
     public GameObject NewListScreen;
@@ -10,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject EditStoreScreen;
     public GameObject EditFoodScreen;
     public GameObject EditSectionsScreen;
+    public GameObject EditStoresPanel;
 
     [Header("New List Items")]
     public GameObject NewListGrid;
@@ -29,7 +35,7 @@ public class UIManager : MonoBehaviour
         // always make sure the UI is in the right state before we launch
         InitUI();
 
-
+        instance = this;
     }
 
     private void InitUI()
@@ -67,9 +73,27 @@ public class UIManager : MonoBehaviour
 
         if (PasteListScrollView.activeInHierarchy)
             PasteListScrollView.SetActive(false);
+
+
+
+    }
+
+    private void Start()
+    {
+
     }
 
     #region Screen Handlers
+
+    public void HideEditStores()
+    {
+        EditStoresPanel.SetActive(false);
+    }
+
+    public void ShowEditStores()
+    {
+        EditStoresPanel.SetActive(true);
+    }
 
     private void HideAllScreens()
     {

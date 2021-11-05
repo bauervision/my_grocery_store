@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339817093192230110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108,12 +108,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
-  m_Father: {fileID: 339817094332436395}
-  m_RootOrder: 3
+  m_Father: {fileID: 339817095181599508}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &339817093237936161
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0.34117648, g: 0.8352941, b: 0.6327722, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339817093622226144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0.34117648, g: 0.8352941, b: 0.6327722, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -433,7 +433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '>'
+  m_Text: <
 --- !u!1 &339817093857263447
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +614,6 @@ RectTransform:
   - {fileID: 339817094855740272}
   - {fileID: 339817094412445414}
   - {fileID: 339817093192230110}
-  - {fileID: 339817093237936175}
   - {fileID: 339817095102448106}
   m_Father: {fileID: 339817094974730588}
   m_RootOrder: 1
@@ -682,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25098038, g: 0.66255575, b: 1, a: 0.23529412}
+  m_Color: {r: 0.013723749, g: 0.021737916, b: 0.028301895, a: 0.23529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -795,7 +794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339817094855740272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -893,7 +892,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1024, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339817094974730591
 MonoBehaviour:
@@ -987,19 +986,7 @@ MonoBehaviour:
       m_Calls: []
   onEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TestSwipeEvent, Assembly-CSharp
-        m_MethodName: SwipeEventCalled
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 1
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &339817094974730590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,7 +1012,7 @@ MonoBehaviour:
   verticalIntervalParent: 0
   verticalSpeed: 10
   disableWith: {fileID: 339817094974730591}
-  position: {x: 0, y: -1}
+  position: {x: 0, y: 0}
   onPositionChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1176,7 +1163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339817095102448106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1176,7 @@ RectTransform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 339817094332436395}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -1344,6 +1331,7 @@ RectTransform:
   - {fileID: 339817093978101477}
   - {fileID: 339817093350154227}
   - {fileID: 339817093646088160}
+  - {fileID: 339817093237936175}
   m_Father: {fileID: 339817094974730588}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

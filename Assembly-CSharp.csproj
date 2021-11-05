@@ -45,7 +45,6 @@
      <Compile Include="Assets\Scripts\MyStore.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\NativeToolkit\Scripts\NativeToolkit.cs" />
-     <Compile Include="Assets\Scripts\DragController.cs" />
      <Compile Include="Assets\Scripts\TestSwipeEvent.cs" />
      <None Include="Assets\Gamestrap\UI\Fonts\Monospace\README.txt" />
      <None Include="Assets\Gamestrap\UI\Fonts\Lato\SIL Open Font License.txt" />
