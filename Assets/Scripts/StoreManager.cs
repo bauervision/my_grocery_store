@@ -48,7 +48,7 @@ public class StoreManager : MonoBehaviour
     private string newItemName = string.Empty;
 
     // Default Sections
-    private string[] defaultSections = new string[] { "Produce", "Alcohol", "Bread", "Meats", "Coffee", "Supplies", "Clothes", "Snacks" };
+    private string[] defaultSections = new string[] { "Produce", "Alcohol", "Bread", "Meats", "Coffee", "Supplies", "Clothes", "Snacks", "Dairy" };
 
     //Deafult Items
     private string[] produce = new string[] { "Apples", "Bananas", "Lettuce", "Berries", "Veggies" };
@@ -59,6 +59,7 @@ public class StoreManager : MonoBehaviour
     private string[] supplies = new string[] { "TP", "PT", "Trash Bags", "Sandwich Bags", "Paper Plates" };
     private string[] clothes = new string[] { "Socks", "Pants", "Shirts", "Underwear" };
     private string[] snacks = new string[] { "Snacks", "Cheeseits", "Pop Tarts", "Chips", "Popcorn", "Cereal" };
+    private string[] dairy = new string[] { "Milk", "Yogurt", "Cheese", "Butter", "Sour Cream", "Cereal" };
 
 
     private int groceryListCount = 0;
@@ -68,7 +69,7 @@ public class StoreManager : MonoBehaviour
         instance = this;
         DefaultData();
 
-        UIManager.instance.HideEditStores();
+        //UIManager.instance.HideEditStores();
         newSectionConfirmation.SetActive(false);
         newItemConfirmation.SetActive(false);
     }
@@ -127,6 +128,7 @@ public class StoreManager : MonoBehaviour
         newStore.sectionItems.Add(new SectionItem(sections[5], supplies));
         newStore.sectionItems.Add(new SectionItem(sections[6], clothes));
         newStore.sectionItems.Add(new SectionItem(sections[7], snacks));
+        newStore.sectionItems.Add(new SectionItem(sections[8], dairy));
 
         my_stores.Add(newStore);
         Dropdown.OptionData newOption = new Dropdown.OptionData();
@@ -244,7 +246,7 @@ public class StoreManager : MonoBehaviour
     {
         // add a new section
         GameObject section = GameObject.Instantiate(listItemPrefab, newListItemsGrid.transform);
-        section.GetComponent<Lean.Gui.LeanDrag>().OnEnd.AddListener(() => HandleItemDragged(name, section));
+        //section.GetComponent<Lean.Gui.LeanDrag>().OnEnd.AddListener(() => HandleItemDragged(name, section));
         // set the first child
         section.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = name;
 

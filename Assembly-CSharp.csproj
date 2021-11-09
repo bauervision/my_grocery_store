@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\NativeToolkit\Example\NativeToolkitExample.cs" />
      <Compile Include="Assets\Scripts\GroceryItem.cs" />
+     <Compile Include="Assets\Scripts\DragController.cs" />
      <Compile Include="Assets\Scripts\ListManager.cs" />
      <Compile Include="Assets\Scripts\ProcessList.cs" />
      <Compile Include="Assets\Scripts\StoreManager.cs" />

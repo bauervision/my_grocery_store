@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     [Header("Main Screens")]
+    public GameObject GroceryList;
     public GameObject StartScreen;
     public GameObject NewListScreen;
     public GameObject NewStoreScreen;
@@ -40,23 +41,25 @@ public class UIManager : MonoBehaviour
 
     private void InitUI()
     {
+        if (GroceryList.activeInHierarchy)
+            GroceryList.SetActive(false);
         if (!StartScreen.activeInHierarchy)
             StartScreen.SetActive(true);
 
         if (!NewListScreen.activeInHierarchy)
-            NewListScreen.SetActive(true);
+            NewListScreen.SetActive(false);
 
         if (!NewStoreScreen.activeInHierarchy)
-            NewStoreScreen.SetActive(true);
+            NewStoreScreen.SetActive(false);
 
         if (!EditStoreScreen.activeInHierarchy)
-            EditStoreScreen.SetActive(true);
+            EditStoreScreen.SetActive(false);
 
         if (!EditFoodScreen.activeInHierarchy)
-            EditFoodScreen.SetActive(true);
+            EditFoodScreen.SetActive(false);
 
         if (!EditSectionsScreen.activeInHierarchy)
-            EditSectionsScreen.SetActive(true);
+            EditSectionsScreen.SetActive(false);
 
         // if visible, hide these
         if (NewListPanel.activeInHierarchy)
@@ -105,16 +108,13 @@ public class UIManager : MonoBehaviour
         EditSectionsScreen.SetActive(false);
 
         PasteListPanel.SetActive(false);
-        PasteListInput.SetActive(false);
-        PasteListScrollView.SetActive(false);
-        PasteListAddItem.SetActive(false);
+
     }
 
     public void ShowConvertedList()
     {
-        PasteListInput.SetActive(false);
-        PasteListScrollView.SetActive(true);
-        PasteListAddItem.SetActive(true);
+        PasteListPanel.SetActive(false);
+        GroceryList.SetActive(true);
     }
 
     public void SetScreen_PasteList()
@@ -173,6 +173,8 @@ public class UIManager : MonoBehaviour
         StartScreen.SetActive(true);
 
     }
+
+
 
 
 

@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "R3CR609W8NK",
     "m_SelectedPackage": {
         "deviceId": "R3CR609W8NK",
-        "name": "com.DefaultCompany.MyGroceryStore",
-        "processId": 14452,
+        "name": "com.BauerVision.MyGroceryStore",
+        "processId": 21383,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,18 @@
             "deviceId": "R3CR609W8NK",
             "name": "com.DefaultCompany.MyGroceryStore",
             "processId": 14452,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR609W8NK",
+            "name": "com.DefaultCompany.MyGroceryStore",
+            "processId": 19509,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR609W8NK",
+            "name": "com.BauerVision.MyGroceryStore",
+            "processId": 21383,
             "exited": false
         }
     ],
