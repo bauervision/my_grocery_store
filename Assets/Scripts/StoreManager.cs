@@ -31,6 +31,8 @@ public class StoreManager : MonoBehaviour
     public List<Dropdown.OptionData> store_options;
     public List<Dropdown.OptionData> section_options;
 
+    public Text currentListText;
+
 
     [Header("Data Elements")]
     public GroceryStore activeStore = null;
@@ -59,10 +61,11 @@ public class StoreManager : MonoBehaviour
     private string[] supplies = new string[] { "TP", "PT", "Trash Bags", "Sandwich Bags", "Paper Plates" };
     private string[] clothes = new string[] { "Socks", "Pants", "Shirts", "Underwear" };
     private string[] snacks = new string[] { "Snacks", "Cheeseits", "Pop Tarts", "Chips", "Popcorn", "Cereal" };
-    private string[] dairy = new string[] { "Milk", "Yogurt", "Cheese", "Butter", "Sour Cream", "Cereal" };
+    private string[] dairy = new string[] { "Milk", "Yogurt", "Cheese", "Butter", "Sour Cream" };
 
 
-    private int groceryListCount = 0;
+    public int remainingListCount = 0;
+    public int initialGroceryListCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,17 +80,22 @@ public class StoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // currentListText.text = remainingListCount + " / " + initialGroceryListCount;
         // monitor the lists
-        if (groceryListCount != newListItemsGrid.transform.childCount)
-        {
-            groceryListCount = newListItemsGrid.transform.childCount;
-            if (groceryListCount == 0)
-            {
-                print("List Complete!");
-            }
-        }
+        // if (groceryListCount != newListItemsGrid.transform.childCount)
+        // {
+        //     groceryListCount = newListItemsGrid.transform.childCount;
+        //     if (groceryListCount == 0)
+        //     {
+        //         print("List Complete!");
+        //     }
+        // }
 
+    }
+
+    public void SetCurrentListCount()
+    {
+        currentListText.text = remainingListCount + " / " + initialGroceryListCount;
     }
 
     private void DefaultData()
@@ -105,11 +113,6 @@ public class StoreManager : MonoBehaviour
         SetActiveStore(0);
         activeSection = activeStore.sectionItems[0];
         LoadStoreSections(activeStore);
-
-    }
-
-    private void AddSectionItem(string sectionName, string itemName)
-    {
 
     }
 
@@ -242,21 +245,31 @@ public class StoreManager : MonoBehaviour
     }
 
 
-    public void CreateNewListGameObject(string name)
+    ///<summary>Called from the UI whenever we process the incoming list. This creates a new swipeable item in the list sorted by location in the current store  </summary>
+    public void CreateNewListGameObject(GroceryItem item)
     {
+        initialGroceryListCount++;
         // add a new section
         GameObject section = GameObject.Instantiate(listItemPrefab, newListItemsGrid.transform);
-        //section.GetComponent<Lean.Gui.LeanDrag>().OnEnd.AddListener(() => HandleItemDragged(name, section));
-        // set the first child
-        section.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = name;
+        section.GetComponent<Lean.Gui.LeanDrag>().OnEnd.AddListener(() => HandleItemDragged(item.name, section));
+        // set the children
+        section.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = item.name;
+        section.transform.GetChild(0).transform.GetChild(4).GetComponent<Text>().text = item.section_index.ToString();
+        section.transform.GetChild(0).transform.GetChild(5).GetComponent<Text>().text = item.section_name;
 
 
+    }
+    public void ClearOldGroceryList()
+    {
+        for (int i = 0; i < newListItemsGrid.transform.childCount; i++)
+            Destroy(newListItemsGrid.transform.GetChild(i).gameObject);
     }
 
     private void HandleItemDragged(string name, GameObject item)
     {
-        Destroy(item);
-        print(newListItemsGrid.transform.childCount + " list items reamining");
+        //remainingListCount++;
+        //currentListText.text = remainingListCount + " / " + initialGroceryListCount;
+        //print(name + " dragged");
 
     }
 

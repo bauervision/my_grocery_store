@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
-
-
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,16 +10,13 @@ public class UIManager : MonoBehaviour
     [Header("Main Screens")]
     public GameObject GroceryList;
     public GameObject StartScreen;
-    public GameObject NewListScreen;
+
     public GameObject NewStoreScreen;
     public GameObject EditStoreScreen;
     public GameObject EditFoodScreen;
     public GameObject EditSectionsScreen;
     public GameObject EditStoresPanel;
 
-    [Header("New List Items")]
-    public GameObject NewListGrid;
-    public GameObject NewListPanel;
 
 
     [Header("Paste List Items")]
@@ -29,6 +25,8 @@ public class UIManager : MonoBehaviour
     public GameObject PasteListScrollView;
     public GameObject PasteListAddItem;
 
+    [Header("Text Items")]
+    public Text CurrentGroceryStore;
 
 
     private void Awake()
@@ -46,9 +44,6 @@ public class UIManager : MonoBehaviour
         if (!StartScreen.activeInHierarchy)
             StartScreen.SetActive(true);
 
-        if (!NewListScreen.activeInHierarchy)
-            NewListScreen.SetActive(false);
-
         if (!NewStoreScreen.activeInHierarchy)
             NewStoreScreen.SetActive(false);
 
@@ -62,9 +57,6 @@ public class UIManager : MonoBehaviour
             EditSectionsScreen.SetActive(false);
 
         // if visible, hide these
-        if (NewListPanel.activeInHierarchy)
-            NewListPanel.SetActive(false);
-
         if (PasteListPanel.activeInHierarchy)
             PasteListPanel.SetActive(false);
 
@@ -101,41 +93,36 @@ public class UIManager : MonoBehaviour
     private void HideAllScreens()
     {
         StartScreen.SetActive(false);
-        NewListScreen.SetActive(false);
         NewStoreScreen.SetActive(false);
         EditFoodScreen.SetActive(false);
         EditStoreScreen.SetActive(false);
         EditSectionsScreen.SetActive(false);
-
         PasteListPanel.SetActive(false);
-
+        GroceryList.SetActive(false);
     }
+
+    ///<summary>Called from the UI whenever we process the incoming list. </summary>
 
     public void ShowConvertedList()
     {
         PasteListPanel.SetActive(false);
         GroceryList.SetActive(true);
+        CurrentGroceryStore.text = StoreManager.instance.activeStore.store_name;
+
     }
 
+    public void ReturnToList()
+    {
+        EditStoreScreen.SetActive(false);
+        GroceryList.SetActive(true);
+        StoreManager.instance.ClearOldGroceryList();
+
+    }
     public void SetScreen_PasteList()
     {
         HideAllScreens();
         PasteListPanel.SetActive(true);
         PasteListInput.SetActive(true);
-
-    }
-    public void SetScreen_NewList()
-    {
-        HideAllScreens();
-        NewListScreen.SetActive(true);
-        NewListPanel.SetActive(false);
-        NewListGrid.SetActive(true);
-    }
-
-    public void NewList_CreateNew()
-    {
-        NewListPanel.SetActive(true);
-        NewListGrid.SetActive(false);
 
     }
 

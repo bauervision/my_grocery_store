@@ -26,6 +26,8 @@ public class ProcessList : MonoBehaviour
 
     public void ProcessIncomingList()
     {
+        groceryList.Clear();
+        StoreManager.instance.ClearOldGroceryList();
         string[] listItems = rawList.ToString().Split(',');
         foreach (var item in listItems)
         {
@@ -40,9 +42,11 @@ public class ProcessList : MonoBehaviour
 
         // finally spawn the list on the UI
         foreach (GroceryItem item in groceryList)
-            StoreManager.instance.CreateNewListGameObject(item.name);
+            StoreManager.instance.CreateNewListGameObject(item);
+
 
     }
+
 
 
 

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R3CR609W8NK",
         "name": "com.BauerVision.MyGroceryStore",
-        "processId": 21383,
+        "processId": 21736,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -24,6 +24,12 @@
             "deviceId": "R3CR609W8NK",
             "name": "com.BauerVision.MyGroceryStore",
             "processId": 21383,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR609W8NK",
+            "name": "com.BauerVision.MyGroceryStore",
+            "processId": 21736,
             "exited": false
         }
     ],
